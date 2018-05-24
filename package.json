@@ -1,0 +1,29 @@
+{
+  "name": "juheapi",
+  "version": "0.1.0",
+  "description": "juhe",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmatsuZero/juhe.git"
+  },
+  "keywords": [
+    "juhe",
+    "frisbee"
+  ],
+  "author": "daubert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AmatsuZero/juhe/issues"
+  },
+  "peerDependencies": {
+    "frisbee": "^2.0.4"
+  },
+  "devDependencies": {
+    "jest": "^22.4.4"
+  },
+  "homepage": "https://github.com/AmatsuZero/juhe#readme"
+}
