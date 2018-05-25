@@ -1,29 +1,38 @@
 {
-  "name": "juheapi",
+  "name": "amapapi",
   "version": "0.1.0",
-  "description": "juhe",
-  "main": "index.js",
+  "description": "AMap",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "babel src/ -d lib/",
+    "prepublish": "yarn run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AmatsuZero/juhe.git"
+    "url": "git+https://github.com/AmatsuZero/AMap.git"
   },
   "keywords": [
-    "juhe",
+    "AMap",
     "frisbee"
   ],
   "author": "daubert",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AmatsuZero/juhe/issues"
+    "url": "https://github.com/AmatsuZero/AMap/issues"
   },
   "peerDependencies": {
     "frisbee": "^2.0.4"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "flow-bin": "^0.73.0",
+    "frisbee": "^2.0.4",
     "jest": "^22.4.4"
   },
-  "homepage": "https://github.com/AmatsuZero/juhe#readme"
+  "homepage": "https://github.com/AmatsuZero/AMap#readme"
 }
