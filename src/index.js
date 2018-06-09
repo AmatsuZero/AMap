@@ -5,6 +5,7 @@ import {
   Location,
   RegeoResponseType,
   IPResponse,
+  WeatherResponseType,
 } from './types';
 import GeoResponse from './types/Geo/GeoResponse';
 
@@ -94,5 +95,27 @@ export default class AMap {
       if (res.err) throw res.err;
       if (res.body.status === '0') throw new Error(res.body.info);
       return new IPResponse(res.body);
+    }
+    async weather(
+      city: ?string,
+      extensions: 'base' | 'all' = 'base',
+      output: "JSON" | "XML" = 'JSON',
+    ): Promise<?WeatherResponseType> {
+      let parameter = city;
+      if (!parameter) {
+        const ret = await this.ip();
+        parameter = ret.adcode;
+      }
+      const res = await this.api.get('/weather/weatherInfo', {
+        body: {
+          key: this.appKey,
+          city: parameter,
+          output,
+          extensions,
+        },
+      });
+      if (res.err) throw res.err;
+      if (res.body.status === '0') throw new Error(res.body.info);
+      return new WeatherResponseType(res.body);
     }
 }

@@ -13,7 +13,7 @@
     "node": true,
     "es6": true,
     "jest": true,
-    "commonjs": false
+    "jest/globals": true
   },
   "parserOptions": {
     "ecmaVersion": 6,

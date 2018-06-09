@@ -1,5 +1,5 @@
 import AMap from '../src';
-import GetIP from '../src/location';
+import GetIP from '../src/GetIP';
 
 const api = new AMap('08e16d6e813d70419d0f59d1379ffbe7');
 
