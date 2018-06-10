@@ -19,11 +19,7 @@ type WindDirection = '无风向' | '东北' | '东'
 type WindPower = '<3' | '3~4' | '4~5' | '5~6' | '6~7' |
   '7~8' | '8~9' | '9~10' | '10~11' | '11~12';
 
-const toDate = (str: string): Date => {
-  if (str.length > 10) return new Date(str);
-  const parts = str.split('-');
-  return new Date(parts[0], parts[1] - 1, parts[2]);
-};
+const toDate = (str: string): Date => new Date(str);
 
 class LievWeather {
     province: string;
@@ -33,7 +29,7 @@ class LievWeather {
     temperature: number;
     winddirection: WindDirection;
     windpower: WindPower;
-    humidity: string;
+    humidity: number;
     reporttime: Date;
 
     constructor(props) {

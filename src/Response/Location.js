@@ -10,4 +10,7 @@ export default class Location {
       const loc = str.split(',');
       return new Location(loc[0], loc[1]);
     }
+    get stringValue() {
+      return `${this.lon},${this.lat}`;
+    }
 }
