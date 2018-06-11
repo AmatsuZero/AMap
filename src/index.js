@@ -5,6 +5,7 @@ import {
   RegeoResponseType,
   IPResponse,
   WeatherResponseType,
+  DistrictResponseType,
 } from './Response';
 import {
   GeoRequestConfig,
@@ -12,6 +13,7 @@ import {
   IPServiceRequestConfig,
   StaticMapRequestConfig,
   WeatherRequestConfig,
+  DistrictRequestConfig,
 } from './Config';
 
 export default class AMap {
@@ -81,5 +83,17 @@ export default class AMap {
       if (res.err) throw res.err;
       if (res.body.status === '0') throw new Error(res.body.info);
       return res.body;
+    }
+    async district(config: DistrictRequestConfig): Promise<DistrictResponseType> {
+      const body: Object = {
+        key: this.appKey,
+        ...config,
+      };
+      const res = await this.api.get('/config/district', {
+        body,
+      });
+      if (res.err) throw res.err;
+      if (res.body.status === '0') throw new Error(res.body.info);
+      return new DistrictResponseType(res.body);
     }
 }
