@@ -1,10 +1,7 @@
 // @flow
 
-export default class IPServiceRequestConfig {
+import BaseRequestConfig from './BaseRequestConfig';
+
+export default class IPServiceRequestConfig extends BaseRequestConfig {
   ip: string;
-  sig: string;
-  output: 'XML' | 'JSON';
-  constructor() {
-    this.output = 'JSON';
-  }
 }

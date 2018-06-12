@@ -2,8 +2,9 @@
 
 import { Location } from '../Response';
 import { Label, Marker, Path, Size } from '../StaticMap';
+import BaseRequestConfig from './BaseRequestConfig';
 
-export default class StaticMapRequestConfig {
+export default class StaticMapRequestConfig extends BaseRequestConfig {
   location: string;
   zoom: number;
   size: Size;
@@ -12,8 +13,9 @@ export default class StaticMapRequestConfig {
   labels: string;
   paths: string;
   traffic: 0 | 1;
-  sig: string;
+
   constructor() {
+    super();
     this.zoom = 1;
     this.size = new Size(400, 400);
     this.scale = 1;
@@ -33,6 +35,6 @@ export default class StaticMapRequestConfig {
   }
 
   setLocation(location: Location) {
-    this.location = location.stringValue;
+    this.location = location.toString();
   }
 }

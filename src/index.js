@@ -19,14 +19,19 @@ import {
 export default class AMap {
     appKey: string;
     api: Frisbee;
-    constructor(key: string) {
+    privateKey: ?string;
+    constructor(key: string, privateKey: ?string) {
       this.appKey = key;
+      this.privateKey = privateKey;
       this.api = new Frisbee({
         baseURI: 'http://restapi.amap.com/v3',
       });
     }
 
     async geo(config: GeoRequestConfig): Promise<GeoResponseType[]> {
+      if (this.privateKey) {
+        config.sign(this.privateKey);
+      }
       const res = await this.api.get('/geocode/geo', {
         body: {
           key: this.appKey,
@@ -39,6 +44,9 @@ export default class AMap {
     }
 
     async regeo(config: RegeoRequestConfig): Promise<RegeoResponseType[]> {
+      if (this.privateKey) {
+        config.sign(this.privateKey);
+      }
       const res = await this.api.get('/geocode/regeo', {
         body: {
           key: this.appKey,
@@ -51,6 +59,9 @@ export default class AMap {
     }
 
     async ip(config: IPServiceRequestConfig = new IPServiceRequestConfig()): Promise<IPResponse> {
+      if (this.privateKey) {
+        config.sign(this.privateKey);
+      }
       const res = await this.api.get('/ip', {
         body: {
           key: this.appKey,
@@ -64,7 +75,6 @@ export default class AMap {
     async weather(config: WeatherRequestConfig): Promise<WeatherResponseType> {
       const res = await this.api.get('/weather/weatherInfo', {
         body: {
-          key: this.appKey,
           ...config,
         },
       });
@@ -73,6 +83,9 @@ export default class AMap {
       return new WeatherResponseType(res.body);
     }
     async staticMap(config: StaticMapRequestConfig): Promise<string> {
+      if (this.privateKey) {
+        config.sign(this.privateKey);
+      }
       const body: Object = {
         key: this.appKey,
         ...config,

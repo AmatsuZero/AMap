@@ -1,15 +1,15 @@
 // @flow
 
-export default class GeoRequestConfig {
+import BaseRequestConfig from './BaseRequestConfig';
+
+export default class GeoRequestConfig extends BaseRequestConfig {
   address: string;
   batch: boolean;
   city: string;
-  sig: string;
-  callback: ?string;
-  output: 'XML' | 'JSON';
+
   constructor() {
+    super();
     this.batch = false;
-    this.output = 'JSON';
   }
   set addresses(newValue: string[]) {
     this.address = newValue.reduce((accumulator, currentValue, index) =>

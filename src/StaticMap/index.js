@@ -25,7 +25,7 @@ class Size implements URLComponent {
 }
 
 const convertLocations = (locations: Location[]): string => locations
-  .map(value => value.stringValue)
+  .map(value => value.toString())
   .reduce((accumulator, currentValue, currentIndex) =>
     (currentIndex === 0
       ? accumulator + currentValue

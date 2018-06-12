@@ -1,26 +1,24 @@
 // @flow
 import { Location } from '../Response';
+import BaseRequestConfig from './BaseRequestConfig';
 
-export default class RegeoRequestConfig {
+export default class RegeoRequestConfig extends BaseRequestConfig {
   location: string;
   batch: boolean;
   poitype: string;
-  sig: string;
-  callback: string;
   radius: number;
-  extensions: 'base' | 'all';
   roadlevel: 0 | 1;
   homeorcorp: 0 | 1 | 2;
-  output: 'JSON' | 'XML';
+
   constructor() {
+    super();
     this.batch = false;
     this.extensions = 'base';
     this.homeorcorp = 0;
-    this.output = 'JSON';
   }
   set locations(newValue: Location[]) {
     this.location = newValue
-      .map(val => val.stringValue)
+      .map(val => val.toString())
       .reduce((accumulator, currentValue, index) => accumulator + (index === 0 ? '' : '|') + currentValue, '');
   }
   get locations(): Location[] {

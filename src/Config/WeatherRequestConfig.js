@@ -1,11 +1,12 @@
 // @flow
 
-export default class WeatherRequestConfig {
+import BaseRequestConfig from './BaseRequestConfig';
+
+export default class WeatherRequestConfig extends BaseRequestConfig {
   city: string;
-  extensions: 'base' | 'all';
-  output: 'JSON' | 'XML';
+
   constructor() {
+    super();
     this.extensions = 'base';
-    this.output = 'JSON';
   }
 }
