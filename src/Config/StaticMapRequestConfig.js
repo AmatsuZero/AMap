@@ -7,7 +7,7 @@ import BaseRequestConfig from './BaseRequestConfig';
 export default class StaticMapRequestConfig extends BaseRequestConfig {
   location: string;
   zoom: number;
-  size: Size;
+  size: string;
   scale: 1 | 2;
   markers: string;
   labels: string;
@@ -17,9 +17,9 @@ export default class StaticMapRequestConfig extends BaseRequestConfig {
   constructor() {
     super();
     this.zoom = 1;
-    this.size = new Size(400, 400);
     this.scale = 1;
     this.traffic = 0;
+    this.setSize(new Size(400, 400));
   }
 
   setMarkers(markers: Marker[]) {
@@ -36,5 +36,9 @@ export default class StaticMapRequestConfig extends BaseRequestConfig {
 
   setLocation(location: Location) {
     this.location = location.toString();
+  }
+
+  setSize(size: Size) {
+    this.size = size.toParameter();
   }
 }

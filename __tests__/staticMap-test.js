@@ -11,7 +11,7 @@ describe('静态地图图片', () => {
     const marker = new Marker([location], 'mid', '0x4286f4', 'A');
     const config = new StaticMapRequestConfig();
     config.setLocation(location);
-    config.size = new Size(750, 300);
+    config.setSize(new Size(750, 300));
     config.setMarkers([marker]);
     config.zoom = 10;
     const ret = await api.staticMap(config);
@@ -26,7 +26,7 @@ describe('静态地图图片', () => {
     );
     const config = new StaticMapRequestConfig();
     config.setLocation(location);
-    config.size = size;
+    config.setSize(size);
     config.setMarkers([marker]);
     config.zoom = 10;
     const ret = await api.staticMap(config);
@@ -38,7 +38,7 @@ describe('静态地图图片', () => {
     const label = new Label([location], '朝阳公园', 2, 0, 16, '0xFFFFFF', '0x008000');
     const config = new StaticMapRequestConfig();
     config.setLocation(location);
-    config.size = size;
+    config.setSize(size);
     config.setLabels([label]);
     const ret = await api.staticMap(config);
     expect(ret).not.toBeNull();
@@ -51,7 +51,7 @@ describe('静态地图图片', () => {
     const path = new Path([start, end]);
     const config = new StaticMapRequestConfig();
     config.setLocation(location);
-    config.size = size;
+    config.setSize(size);
     config.setPaths([path]);
     const ret = await api.staticMap(config);
     expect(ret).not.toBeNull();
@@ -66,7 +66,7 @@ describe('静态地图图片', () => {
     const path = new Path([start, end]);
     const config = new StaticMapRequestConfig();
     config.setLocation(location);
-    config.size = size;
+    config.setSize(size);
     config.setMarkers([marker]);
     config.setLabels([label]);
     config.setPaths([path]);
