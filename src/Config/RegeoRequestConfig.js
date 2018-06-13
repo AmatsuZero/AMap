@@ -3,7 +3,7 @@ import { Location } from '../Response';
 import BaseRequestConfig from './BaseRequestConfig';
 
 export default class RegeoRequestConfig extends BaseRequestConfig {
-  location: string;
+  _location: Location[];
   batch: boolean;
   poitype: string;
   radius: number;
@@ -16,14 +16,10 @@ export default class RegeoRequestConfig extends BaseRequestConfig {
     this.extensions = 'base';
     this.homeorcorp = 0;
   }
-  set locations(newValue: Location[]) {
-    this.location = newValue
-      .map(val => val.toString())
-      .reduce((accumulator, currentValue, index) => accumulator + (index === 0 ? '' : '|') + currentValue, '');
+  set location(newValue: Location[]) {
+    this._location = newValue;
   }
-  get locations(): Location[] {
-    return this.location.split('|')
-      .map(value => value.split(','))
-      .map(value => new Location(value[0], value[1]));
+  get location(): Location[] {
+    return this._location;
   }
 }

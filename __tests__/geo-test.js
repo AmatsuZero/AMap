@@ -5,12 +5,12 @@ import {
 } from '../src/Config';
 import { Location } from '../src/Response';
 
-const api = new AMap('08e16d6e813d70419d0f59d1379ffbe7');
+const api = new AMap(process.env.APPKEY);
 
 describe('编码', () => {
   test('地理编码', async () => {
     const config = new GeoRequestConfig();
-    config.addresses = ['方恒国际中心A座'];
+    config.address = ['方恒国际中心A座'];
     const ret = await api.geo(config);
     expect(ret).not.toBeUndefined();
   });
@@ -19,7 +19,7 @@ describe('编码', () => {
     try {
       const config = new RegeoRequestConfig();
       const location = new Location(116.481488, 39.990464);
-      config.locations = [location];
+      config.location = [location];
       config.batch = true;
       config.poitype = '商务写字楼';
       const ret = await api.regeo(config);

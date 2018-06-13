@@ -3,7 +3,7 @@
 import BaseRequestConfig from './BaseRequestConfig';
 
 export default class GeoRequestConfig extends BaseRequestConfig {
-  address: string;
+  _address: string[];
   batch: boolean;
   city: string;
 
@@ -11,11 +11,10 @@ export default class GeoRequestConfig extends BaseRequestConfig {
     super();
     this.batch = false;
   }
-  set addresses(newValue: string[]) {
-    this.address = newValue.reduce((accumulator, currentValue, index) =>
-      accumulator + (index === 0 ? '' : '|') + currentValue, '');
+  set address(newValue: string[]) {
+    this._address = newValue;
   }
-  get addresses(): string[] {
-    return this.address.split('|');
+  get address(): string[] {
+    return this._address;
   }
 }

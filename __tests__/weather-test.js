@@ -1,7 +1,7 @@
 import AMap from '../src';
 import { WeatherRequestConfig } from '../src/Config';
 
-const api = new AMap('08e16d6e813d70419d0f59d1379ffbe7');
+const api = new AMap(process.env.APPKEY);
 
 describe('天气', () => {
   test('实况天气', async () => {

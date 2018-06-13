@@ -1,25 +1,14 @@
 // @flow
 import Location from '../Response/Location';
 
-interface URLComponent {
-  toParameter(): string;
-}
-
-const fromArray = <T: URLComponent>(array: T[]): string => array
-  .map(value => value.toParameter())
-  .reduce((accumulator, currentValue, currentIndex) =>
-    (currentIndex === 0
-      ? accumulator + currentValue
-      : `${accumulator}|${currentValue}`), '');
-
-class Size implements URLComponent {
+class Size {
   width: number;
   height: number;
   constructor(width: number, height: number) {
     this.width = width <= 1 ? 1 : Math.min(width, 1024);
     this.height = height <= 1 ? 1 : Math.min(height, 1024);
   }
-  toParameter(): string {
+  toString(): string {
     return `${this.width}*${this.height}`;
   }
 }
@@ -31,7 +20,7 @@ const convertLocations = (locations: Location[]): string => locations
       ? accumulator + currentValue
       : `${accumulator};${currentValue}`), '');
 
-class Marker implements URLComponent {
+class Marker {
   size: string;
   color: string;
   label: string;
@@ -51,18 +40,15 @@ class Marker implements URLComponent {
     this.location = convertLocations(locations);
     this.url = url;
   }
-  toParameter(): string {
+  toString(): string {
     if (this.size === '-1' && this.url.length > 0) {
       return `${this.size},${this.url},${this.label}:${this.location}`;
     }
     return `${this.size},${this.color},${this.label}:${this.location}`;
   }
-  static toParameter(array: Marker[]): string {
-    return fromArray(array);
-  }
 }
 
-class Label implements URLComponent {
+class Label {
   content: string;
   font: number;
   bold: number;
@@ -87,15 +73,12 @@ class Label implements URLComponent {
     this.background = background;
     this.location = convertLocations(locations);
   }
-  toParameter(): string {
+  toString(): string {
     return `${this.content},${this.font},${this.bold},${this.fontSize},${this.fontColor},${this.background}:${this.location}`;
-  }
-  static toParameter(array: Label[]): string {
-    return fromArray(array);
   }
 }
 
-class Path implements URLComponent {
+class Path {
   weight: number;
   color: string;
   transparency: number;
@@ -118,12 +101,8 @@ class Path implements URLComponent {
     this.location = convertLocations(locations);
   }
 
-  toParameter(): string {
+  toString(): string {
     return `${this.weight},${this.color},${this.transparency},${this.fillcolor},${this.fillTransparency}:${this.location}`;
-  }
-
-  static toParameter(array: Path[]): string {
-    return fromArray(array);
   }
 }
 

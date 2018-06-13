@@ -2,7 +2,7 @@ import AMap from '../src';
 import GetIP from '../src/GetIP';
 import { IPServiceRequestConfig } from '../src/Config';
 
-const api = new AMap('08e16d6e813d70419d0f59d1379ffbe7');
+const api = new AMap(process.env.APPKEY);
 
 describe('IP定位', () => {
   test('IP定位（AMap获取IP）', async () => {

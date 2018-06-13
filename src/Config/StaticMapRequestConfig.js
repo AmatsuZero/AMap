@@ -5,13 +5,13 @@ import { Label, Marker, Path, Size } from '../StaticMap';
 import BaseRequestConfig from './BaseRequestConfig';
 
 export default class StaticMapRequestConfig extends BaseRequestConfig {
-  location: string;
+  _location: Location;
   zoom: number;
-  size: string;
+  _size: Size;
   scale: 1 | 2;
-  markers: string;
-  labels: string;
-  paths: string;
+  _markers: Marker[];
+  _labels: Label[];
+  _paths: Path[];
   traffic: 0 | 1;
 
   constructor() {
@@ -19,26 +19,46 @@ export default class StaticMapRequestConfig extends BaseRequestConfig {
     this.zoom = 1;
     this.scale = 1;
     this.traffic = 0;
-    this.setSize(new Size(400, 400));
+    this.size = new Size(400, 400);
   }
 
-  setMarkers(markers: Marker[]) {
-    this.markers = Marker.toParameter(markers);
+  set location(newValue: Location) {
+    this._location = newValue;
   }
 
-  setLabels(labels: Label[]) {
-    this.labels = Label.toParameter(labels);
+  get location(): Location {
+    return this._location;
   }
 
-  setPaths(paths: Path[]) {
-    this.paths = Path.toParameter(paths);
+  set size(newValue: Size) {
+    this._size = newValue;
   }
 
-  setLocation(location: Location) {
-    this.location = location.toString();
+  get size(): Size {
+    return this._size;
   }
 
-  setSize(size: Size) {
-    this.size = size.toParameter();
+  set markers(markers: Marker[]) {
+    this._markers = markers;
+  }
+
+  get markers(): Marker[] {
+    return this._markers;
+  }
+
+  set labels(labels: Label[]) {
+    this._labels = labels;
+  }
+
+  get labels(): Label[] {
+    return this._labels;
+  }
+
+  set paths(paths: Path[]) {
+    this._paths = paths;
+  }
+
+  get paths(): Path[] {
+    return this._paths;
   }
 }

@@ -35,7 +35,7 @@ export default class AMap {
       const res = await this.api.get('/geocode/geo', {
         body: {
           key: this.appKey,
-          ...config,
+          ...config.toParameter(),
         },
       });
       if (res.err) throw res.err;
@@ -50,7 +50,7 @@ export default class AMap {
       const res = await this.api.get('/geocode/regeo', {
         body: {
           key: this.appKey,
-          ...config,
+          ...config.toParameter(),
         },
       });
       if (res.err) throw res.err;
@@ -65,7 +65,7 @@ export default class AMap {
       const res = await this.api.get('/ip', {
         body: {
           key: this.appKey,
-          ...config,
+          ...config.toParameter(),
         },
       });
       if (res.err) throw res.err;
@@ -75,7 +75,8 @@ export default class AMap {
     async weather(config: WeatherRequestConfig): Promise<WeatherResponseType> {
       const res = await this.api.get('/weather/weatherInfo', {
         body: {
-          ...config,
+          key: this.appKey,
+          ...config.toParameter(),
         },
       });
       if (res.err) throw res.err;
@@ -86,24 +87,22 @@ export default class AMap {
       if (this.privateKey) {
         config.sign(this.privateKey);
       }
-      const body: Object = {
-        key: this.appKey,
-        ...config,
-      };
       const res = await this.api.get('/staticmap', {
-        body,
+        body: {
+          key: this.appKey,
+          ...config.toParameter(),
+        },
       });
       if (res.err) throw res.err;
       if (res.body.status === '0') throw new Error(res.body.info);
       return res.body;
     }
     async district(config: DistrictRequestConfig): Promise<DistrictResponseType> {
-      const body: Object = {
-        key: this.appKey,
-        ...config,
-      };
       const res = await this.api.get('/config/district', {
-        body,
+        body: {
+          key: this.appKey,
+          ...config.toParameter(),
+        },
       });
       if (res.err) throw res.err;
       if (res.body.status === '0') throw new Error(res.body.info);
