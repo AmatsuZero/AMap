@@ -3,7 +3,7 @@ import {
   GeoRequestConfig,
   RegeoRequestConfig,
 } from '../src/Config';
-import { Location } from '../src/Response';
+import { GeoLocation } from '../src/Response';
 
 const api = new AMap(process.env.APPKEY);
 
@@ -18,7 +18,7 @@ describe('编码', () => {
   test('逆地理编码', async () => {
     try {
       const config = new RegeoRequestConfig();
-      const location = new Location(116.481488, 39.990464);
+      const location = new GeoLocation(116.481488, 39.990464);
       config.location = [location];
       config.batch = true;
       config.poitype = '商务写字楼';

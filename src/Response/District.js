@@ -1,6 +1,6 @@
 // @flow
 
-import Location from './Location';
+import GeoLocation from './GeoLocation';
 
 class Suggestion {
   keywords: string[];
@@ -15,8 +15,8 @@ class District {
   citycode: string;
   adcode: string;
   name: string;
-  polyline: Location[];
-  center: ?Location;
+  polyline: GeoLocation[];
+  center: ?GeoLocation;
   level: 'country' | 'province' | 'city' | 'district' | 'street';
   districts: District[];
   constructor(prop: Object) {
@@ -24,9 +24,9 @@ class District {
     this.adcode = prop.adcode;
     this.name = prop.name;
     this.polyline = prop.polyline !== undefined && prop.polyline.length > 0
-      ? prop.polyline.split(';').map(value => Location.fromString(value))
+      ? prop.polyline.split(';').map(value => GeoLocation.fromString(value))
       : [];
-    this.center = prop.center !== undefined ? Location.fromString(prop.center) : null;
+    this.center = prop.center !== undefined ? GeoLocation.fromString(prop.center) : null;
     this.districts = prop.districts !== undefined && Array.isArray(prop.districts)
       ? prop.districts.map(value => new District(value))
       : [];

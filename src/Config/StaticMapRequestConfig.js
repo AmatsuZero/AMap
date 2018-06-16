@@ -1,11 +1,11 @@
 // @flow
 
-import { Location } from '../Response';
+import { GeoLocation } from '../Response';
 import { Label, Marker, Path, Size } from '../StaticMap';
 import BaseRequestConfig from './BaseRequestConfig';
 
 export default class StaticMapRequestConfig extends BaseRequestConfig {
-  _location: Location;
+  _location: GeoLocation;
   zoom: number;
   _size: Size;
   scale: 1 | 2;
@@ -22,11 +22,11 @@ export default class StaticMapRequestConfig extends BaseRequestConfig {
     this.size = new Size(400, 400);
   }
 
-  set location(newValue: Location) {
+  set location(newValue: GeoLocation) {
     this._location = newValue;
   }
 
-  get location(): Location {
+  get location(): GeoLocation {
     return this._location;
   }
 

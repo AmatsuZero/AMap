@@ -6,7 +6,9 @@ import {
   IPResponse,
   WeatherResponseType,
   DistrictResponseType,
+  GeoLocation,
 } from './Response';
+
 import {
   GeoRequestConfig,
   RegeoRequestConfig,
@@ -14,6 +16,7 @@ import {
   StaticMapRequestConfig,
   WeatherRequestConfig,
   DistrictRequestConfig,
+  CoordinateConvertConfig,
 } from './Config';
 
 export default class AMap {
@@ -107,5 +110,17 @@ export default class AMap {
       if (res.err) throw res.err;
       if (res.body.status === '0') throw new Error(res.body.info);
       return new DistrictResponseType(res.body);
+    }
+    async coordinateConvert(config: CoordinateConvertConfig): Promise<GeoLocation[]> {
+      const res = await this.api.get('/assistant/coordinate/convert', {
+        body: {
+          key: this.appKey,
+          ...config.toParameter(),
+        },
+      });
+      if (res.err) throw res.err;
+      if (res.body.status === '0') throw new Error(res.body.info);
+      return res.body.locations.split('|')
+        .map(value => GeoLocation.fromString(value));
     }
 }

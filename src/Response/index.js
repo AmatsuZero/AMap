@@ -2,12 +2,12 @@
 import GeoResponseType from './Geo/GeoResponse';
 import RegeoResponseType from './Geo/RegeoResponse';
 import IPResponse from './Ip';
-import Location from './Location';
+import GeoLocation from './GeoLocation';
 import WeatherResponseType from './Weather';
 import DistrictResponseType from './District';
 
 export {
-  Location,
+  GeoLocation,
   GeoResponseType,
   RegeoResponseType,
   IPResponse,

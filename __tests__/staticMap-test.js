@@ -1,13 +1,13 @@
 import AMap from '../src';
 import { Label, Marker, Path, Size } from '../src/StaticMap';
 import { StaticMapRequestConfig } from '../src/Config';
-import Location from '../src/Response/Location';
+import GeoLocation from '../src/Response/GeoLocation';
 
 const api = new AMap(process.env.APPKEY);
 
 describe('静态地图图片', () => {
   test('标注', async () => {
-    const location = new Location(116.481485, 39.990464);
+    const location = new GeoLocation(116.481485, 39.990464);
     const marker = new Marker([location], 'mid', '0x4286f4', 'A');
     const config = new StaticMapRequestConfig();
     config.location = location;
@@ -18,7 +18,7 @@ describe('静态地图图片', () => {
     expect(ret).not.toBeNull();
   }, 30000);
   test('标注（自定义Marker）', async () => {
-    const location = new Location(116.481485, 39.990464);
+    const location = new GeoLocation(116.481485, 39.990464);
     const size = new Size(400, 400);
     const marker = new Marker(
       [location], '-1', '', '0',
@@ -33,7 +33,7 @@ describe('静态地图图片', () => {
     expect(ret).not.toBeNull();
   }, 30000);
   test('标签', async () => {
-    const location = new Location(116.481485, 39.990464);
+    const location = new GeoLocation(116.481485, 39.990464);
     const size = new Size(400, 400);
     const label = new Label([location], '朝阳公园', 2, 0, 16, '0xFFFFFF', '0x008000');
     const config = new StaticMapRequestConfig();
@@ -44,9 +44,9 @@ describe('静态地图图片', () => {
     expect(ret).not.toBeNull();
   }, 30000);
   test('折线', async () => {
-    const location = new Location(116.481485, 39.990464);
-    const start = new Location(116.31604, 39.96491);
-    const end = new Location(116.321785, 39.966827);
+    const location = new GeoLocation(116.481485, 39.990464);
+    const start = new GeoLocation(116.31604, 39.96491);
+    const end = new GeoLocation(116.321785, 39.966827);
     const size = new Size(500, 500);
     const path = new Path([start, end]);
     const config = new StaticMapRequestConfig();
@@ -57,12 +57,12 @@ describe('静态地图图片', () => {
     expect(ret).not.toBeNull();
   }, 30000);
   test('混合', async () => {
-    const location = new Location(116.481485, 39.990464);
+    const location = new GeoLocation(116.481485, 39.990464);
     const size = new Size(750, 300);
     const marker = new Marker([location], 'mid', '0x4286f4', 'A');
     const label = new Label([location], '朝阳公园', 2, 0, 16, '0xFFFFFF', '0x008000');
-    const start = new Location(116.31604, 39.96491);
-    const end = new Location(116.321785, 39.966827);
+    const start = new GeoLocation(116.31604, 39.96491);
+    const end = new GeoLocation(116.321785, 39.966827);
     const path = new Path([start, end]);
     const config = new StaticMapRequestConfig();
     config.location = location;

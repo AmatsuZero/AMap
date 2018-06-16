@@ -4,6 +4,7 @@ import IPServiceRequestConfig from './IPServiceRequestConfig';
 import StaticMapRequestConfig from './StaticMapRequestConfig';
 import WeatherRequestConfig from './WeatherRequestConfig';
 import DistrictRequestConfig from './DistrictRequestConfig';
+import CoordinateConvertConfig from './CoordinateConvertConfig';
 
 export {
   GeoRequestConfig,
@@ -12,4 +13,5 @@ export {
   StaticMapRequestConfig,
   WeatherRequestConfig,
   DistrictRequestConfig,
+  CoordinateConvertConfig,
 };

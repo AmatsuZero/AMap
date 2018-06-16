@@ -1,5 +1,5 @@
 // @flow
-import Location from '../Response/Location';
+import GeoLocation from '../Response/GeoLocation';
 
 class Size {
   width: number;
@@ -13,7 +13,7 @@ class Size {
   }
 }
 
-const convertLocations = (locations: Location[]): string => locations
+const convertLocations = (locations: GeoLocation[]): string => locations
   .map(value => value.toString())
   .reduce((accumulator, currentValue, currentIndex) =>
     (currentIndex === 0
@@ -27,7 +27,7 @@ class Marker {
   location: string;
   url: string;
   constructor(
-    locations: Location[],
+    locations: GeoLocation[],
     size: 'small' | 'mid' | 'large' | '-1' = 'small',
     color: string = '0xFC6054',
     label: string = '',
@@ -57,7 +57,7 @@ class Label {
   background: string;
   location: string;
   constructor(
-    locations: Location[],
+    locations: GeoLocation[],
     content: string = '',
     font: 0 | 1 | 2 | 3 = 0,
     bold: 0 | 1 = 0,
@@ -86,7 +86,7 @@ class Path {
   fillTransparency: number;
   location: string;
   constructor(
-    locations: Location[],
+    locations: GeoLocation[],
     weight: number = 5,
     color: string = '0x0000FF',
     transparency: number = 1,

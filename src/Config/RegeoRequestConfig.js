@@ -1,9 +1,9 @@
 // @flow
-import { Location } from '../Response';
+import { GeoLocation } from '../Response';
 import BaseRequestConfig from './BaseRequestConfig';
 
 export default class RegeoRequestConfig extends BaseRequestConfig {
-  _location: Location[];
+  _location: GeoLocation[];
   batch: boolean;
   poitype: string;
   radius: number;
@@ -16,10 +16,10 @@ export default class RegeoRequestConfig extends BaseRequestConfig {
     this.extensions = 'base';
     this.homeorcorp = 0;
   }
-  set location(newValue: Location[]) {
+  set location(newValue: GeoLocation[]) {
     this._location = newValue;
   }
-  get location(): Location[] {
+  get location(): GeoLocation[] {
     return this._location;
   }
 }

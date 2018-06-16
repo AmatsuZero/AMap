@@ -1,5 +1,5 @@
 // @flow
-import Location from '../Location';
+import GeoLocation from '../GeoLocation';
 
 class Neighborhood {
     name: string;
@@ -14,14 +14,14 @@ class Neighborhood {
 class StreetNumber {
     street: string;
     number: string;
-    location: Location;
+    location: GeoLocation;
     direction: string;
     distance: number;
 
     constructor(prop: Object) {
       this.street = prop.street;
       this.number = prop.number;
-      this.location = Location.fromString(prop.location);
+      this.location = GeoLocation.fromString(prop.location);
       this.direction = prop.direction;
       this.distance = Number.parseFloat(prop.distance);
     }
@@ -39,13 +39,13 @@ class Building {
 
 class BusinessArea {
     businessArea: string;
-    location: Location;
+    location: GeoLocation;
     name: string;
     id: string;
 
     constructor(prop: Object) {
       this.businessArea = prop.businessArea;
-      this.location = Location.fromString(prop.location);
+      this.location = GeoLocation.fromString(prop.location);
       this.name = prop.name;
       this.id = prop.id;
     }
@@ -94,21 +94,21 @@ class Road {
     name: string;
     distance: number;
     direction: string;
-    location: Location;
+    location: GeoLocation;
 
     constructor(prop: Object) {
       this.id = prop.id;
       this.name = prop.name;
       this.distance = Number.parseFloat(prop.distance);
       this.direction = prop.direction;
-      this.location = Location.fromString(prop.location);
+      this.location = GeoLocation.fromString(prop.location);
     }
 }
 
 class RoadInter {
     distance: number;
     direction: string;
-    location: Location;
+    location: GeoLocation;
     firstId: string;
     firstName: string;
     secondId: string;
@@ -117,7 +117,7 @@ class RoadInter {
     constructor(prop: Object) {
       this.distance = Number.parseFloat(prop.distance);
       this.direction = prop.direction;
-      this.location = Location.fromString(prop.location);
+      this.location = GeoLocation.fromString(prop.location);
       this.firstId = prop.first_id;
       this.firstName = prop.first_name;
       this.secondId = prop.second_id;
@@ -133,7 +133,7 @@ class POI {
     distance: number;
     direction: string;
     address: string;
-    location: Location;
+    location: GeoLocation;
     businessarea: string;
 
     constructor(prop: Object) {
@@ -144,7 +144,7 @@ class POI {
       this.distance = Number.parseFloat(prop.distance);
       this.direction = prop.direction;
       this.address = prop.address;
-      this.location = Location.fromString(prop.location);
+      this.location = GeoLocation.fromString(prop.location);
       this.businessarea = prop.businessarea;
     }
 }
@@ -153,7 +153,7 @@ class AOI {
     id: string;
     name: string;
     adcode: string;
-    location: Location;
+    location: GeoLocation;
     area: number;
     distance: number;
 
@@ -161,7 +161,7 @@ class AOI {
       this.id = prop.id;
       this.name = prop.name;
       this.adcode = prop.adcode;
-      this.location = Location.fromString(prop.location);
+      this.location = GeoLocation.fromString(prop.location);
       this.area = Number.parseFloat(prop.area);
       this.distance = Number.parseFloat(prop.distance);
     }
