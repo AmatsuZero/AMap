@@ -5,6 +5,7 @@ import StaticMapRequestConfig from './StaticMapRequestConfig';
 import WeatherRequestConfig from './WeatherRequestConfig';
 import DistrictRequestConfig from './DistrictRequestConfig';
 import CoordinateConvertConfig from './CoordinateConvertConfig';
+import WalkingRequestConfig from './Direction/WalkingRequestConfig';
 
 export {
   GeoRequestConfig,
@@ -14,4 +15,5 @@ export {
   WeatherRequestConfig,
   DistrictRequestConfig,
   CoordinateConvertConfig,
+  WalkingRequestConfig,
 };

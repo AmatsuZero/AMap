@@ -5,6 +5,7 @@ import IPResponse from './Ip';
 import GeoLocation from './GeoLocation';
 import WeatherResponseType from './Weather';
 import DistrictResponseType from './District';
+import WalkingResponseType from './Direction/WalkingResponseType';
 
 export {
   GeoLocation,
@@ -13,4 +14,5 @@ export {
   IPResponse,
   WeatherResponseType,
   DistrictResponseType,
+  WalkingResponseType,
 };
