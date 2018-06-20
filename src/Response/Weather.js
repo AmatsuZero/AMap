@@ -74,7 +74,7 @@ class ForecastWeather {
     adcode: string;
     province: string;
     reporttime: Date;
-    casts: Array<WeatherCast>
+    casts: Array<WeatherCast>;
     constructor(prop) {
       this.city = prop.city;
       this.adcode = prop.adcode;
@@ -86,7 +86,7 @@ class ForecastWeather {
 
 export default class {
     lives: ?Array<LievWeather>;
-    forecasts: ?Array<ForecastWeather>
+    forecasts: ?Array<ForecastWeather>;
     constructor(props: Object) {
       this.lives = props.lives !== undefined && Array.isArray(props.lives)
         ? props.lives.map(value => new LievWeather(value))

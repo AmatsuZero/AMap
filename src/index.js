@@ -8,6 +8,7 @@ import {
   DistrictResponseType,
   GeoLocation,
   WalkingResponseType,
+  TransitResponseType,
 } from './Response';
 
 import {
@@ -19,6 +20,7 @@ import {
   DistrictRequestConfig,
   CoordinateConvertConfig,
   WalkingRequestConfig,
+  TransitRequestConfig,
 } from './Config';
 import BaseRequestConfig from './Config/BaseRequestConfig';
 
@@ -30,18 +32,19 @@ export default class AMap {
       this.appKey = key;
       this.privateKey = privateKey;
       this.api = new Frisbee({
-        baseURI: 'http://restapi.amap.com/v3',
+        baseURI: 'http://restapi.amap.com/',
       });
     }
     async baseRequest(
       config: BaseRequestConfig,
       fragment: string,
       withSig: boolean = true,
+      apiVersion: string = 'v3',
     ): Promise<Object> {
       if (this.privateKey && withSig) {
         config.sign(this.privateKey);
       }
-      const res = await this.api.get(`/${fragment}`, {
+      const res = await this.api.get(`/${apiVersion}/${fragment}`, {
         body: {
           key: this.appKey,
           ...config.toParameter(),
@@ -86,8 +89,14 @@ export default class AMap {
       return body.locations.split('|')
         .map(value => GeoLocation.fromString(value));
     }
+
     async walkingDirection(config: WalkingRequestConfig): Promise<WalkingResponseType> {
       const body = await this.baseRequest(config, 'direction/walking');
       return new WalkingResponseType(body);
+    }
+
+    async transitDirection(config: TransitRequestConfig): Promise<TransitResponseType> {
+      const body = await this.baseRequest(config, 'direction/transit/integrated');
+      return new TransitResponseType(body);
     }
 }

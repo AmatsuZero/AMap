@@ -6,6 +6,7 @@ import WeatherRequestConfig from './WeatherRequestConfig';
 import DistrictRequestConfig from './DistrictRequestConfig';
 import CoordinateConvertConfig from './CoordinateConvertConfig';
 import WalkingRequestConfig from './Direction/WalkingRequestConfig';
+import TransitRequestConfig from './Direction/TransitRequestConfig';
 
 export {
   GeoRequestConfig,
@@ -16,4 +17,5 @@ export {
   DistrictRequestConfig,
   CoordinateConvertConfig,
   WalkingRequestConfig,
+  TransitRequestConfig,
 };

@@ -25,7 +25,7 @@ class DirectionWalkingStep {
   }
 }
 
-class DirectionWalingPath {
+export class DirectionWalingPath {
   distance: number;
   duration: number;
   steps: DirectionWalkingStep | DirectionWalkingStep[];

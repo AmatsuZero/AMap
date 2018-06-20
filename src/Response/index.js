@@ -6,6 +6,7 @@ import GeoLocation from './GeoLocation';
 import WeatherResponseType from './Weather';
 import DistrictResponseType from './District';
 import WalkingResponseType from './Direction/WalkingResponseType';
+import TransitResponseType from './Direction/TransitResponseType';
 
 export {
   GeoLocation,
@@ -15,4 +16,5 @@ export {
   WeatherResponseType,
   DistrictResponseType,
   WalkingResponseType,
+  TransitResponseType,
 };
